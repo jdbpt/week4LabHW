@@ -84,6 +84,7 @@ class Person{
 
     }
 
+    /**creates hamsters and buys them*/
     buyHamsterFactory(hamster){
         let newHamster = new Hamster(hamster);
         newHamster.owner = this.name;
@@ -93,6 +94,7 @@ class Person{
         this.bankAccount -= newHamster.getPrice();
     }
 
+    /**buys hamsters */
     buyHamster(hamster){
         this.hamsters.push(hamster);
         //increment mood, decrement bankAccount
