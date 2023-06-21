@@ -32,8 +32,10 @@ class Hamster{
 
 
 //testing*********Hamster Class
+console.log("******************Testing the Hamster Class***********************")
 const hammy = new Hamster("Hammy");
 hammy.wheelRun(), hammy.eatFood(), console.log(hammy.getPrice());
+
 class Person{
     constructor(name){
         this.name = name;
@@ -100,6 +102,7 @@ class Person{
 }
 
 //testing**************Person Class
+console.log("******************Testing the Person Class***********************")
 const person0 = new Person("Alejandra");
 console.log(person0.getName(), person0.getAge(), person0.getWeight());
 person0.greet();
@@ -113,7 +116,8 @@ person0.buyHamsterFactory("Kitten");
 console.log(person0);//mood increased, added a Hamster, and bankAccount decreased
 
 
-//Create a Story with your Person Class
+//Create a Story with your Person Class (Extra)
+console.log("*********************The Story of Timmy************************/n")
     //1. Instantiate a new Person named Timmy
 const person1 = new Person("Timmy");
     //2. Age Timmy 5 years
@@ -159,5 +163,116 @@ for(let i = 0; i < 2; i++){
 }
 console.log(person1);
 
-//
+
+//separator between Person and Dinner/Chef class
+
+console.log("*************************Chef and Dinner Logging*****************************\n");
+
+//Chef Make Dinners
+
+class Dinner{
+    constructor(appetizer, entree, dessert){
+        this.appetizer = appetizer;
+        this.entree = entree;
+        this.dessert = dessert;
+    }
+//methods to update the properties of a Dinner
+    updateAppetizer(updatedApp){
+        this.appetizer = updatedApp;
+
+    }
+
+    updateEntree(updatedEnt){
+        this.entree = updatedEnt;
+
+    }
+
+    updateDessert(updatedDess){
+        this.dessert = updatedDess;
+
+    }
+
+
+}//end dinner class
+
+class Chef{
+    constructor(name, business, maxJobsLeftInDay){
+        this.name = name;
+        this.business = business;//the name of their business/restaurant
+        this.bookedSolid = false;
+        this.dinners = [];
+        this.maxJobsLeftInDay = maxJobsLeftInDay;//max number of jobs left in a day
+        this.earnings = 0;//starting from 0 earnings as a Chef
+    }
+
+    /**factory for dinners, and return the created dinner assortment*/
+    makeDinners(appetizer, entree, dessert){
+        let newDinner = new Dinner(appetizer, entree, dessert);
+        this.dinners.push(newDinner);
+        return (newDinner);
+    }
+
+    /**take on one job, and add the money earned from that job to earnings*/
+    takeOnAJobToday(moneyEarned){
+        if(this.maxJobsLeftInDay > 0){
+            this.maxJobsLeftInDay -= 1;
+            this.earnings += moneyEarned;
+        } else{
+            //if there are 0 or less jobs available, run bookedSolid
+            this.#bookedSolidState();
+        }
+        
+    }
+
+    /**private method for calling booked solid when no more jobs can be taken on */
+    #bookedSolidState(){
+        this.bookedSolid = true;
+        console.log("Booked for the Day, cannot take on another job!");
+    }
+
+    /**resets the conditions to initial levels*/
+    resetForTheNextDay(maxJobs){
+        this.dinners = [];
+        this.maxJobsLeftInDay = maxJobs;
+        this.bookedSolid = false;
+    }
+}//end Chef class
+
+//making three dinners and logging them******************
+
+let chef0 = new Chef("Alejandro", "The Running Dragon", 2);
+
+//console log three Dinners
+
+console.log(chef0.makeDinners("Smoked Salmon Crustini", "Chili Cheese Dogs", "Key Lime Cheesecake"));
+
+console.log(chef0.makeDinners("Grilled Pear Arugula Salad", "Deep Fried Tofu Burger", "Dark Chocolate Chip White Chololate Cookie"));
+
+console.log(chef0.makeDinners("Chipotle Hushpuppies", "Chili Mac", "Vegan Smores Icecream Sandwich"));
+
+console.log(chef0);//dinners added to dinners array of Chef
+
+//testing extra methods 
+console.log("************************Additional Chef Methods Tested/Demonstrated************************\n");
+
+chef0.takeOnAJobToday(200);
+
+console.log(chef0);
+
+chef0.takeOnAJobToday(2000);
+
+console.log(chef0);
+
+chef0.takeOnAJobToday(12000);
+
+console.log(chef0);
+
+chef0.resetForTheNextDay(5);
+
+console.log(chef0);
+
+
+
+
+
 
