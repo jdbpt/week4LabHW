@@ -40,8 +40,8 @@ class Person{
     constructor(name){
         this.name = name;
         this.age = 0;
-        this.height = 0;
-        this.weight = 0;
+        this.height = 0;//feet 
+        this.weight = 0;//pounds
         this.mood = 0;//integer
         this.hamsters = [];
         this.bankAccount = 0;
@@ -249,8 +249,9 @@ let chef0 = new Chef("Alejandro", "The Running Dragon", 2);
 console.log(chef0.makeDinners("Smoked Salmon Crustini", "Chili Cheese Dogs", "Key Lime Cheesecake"));
 
 console.log(chef0.makeDinners("Grilled Pear Arugula Salad", "Deep Fried Tofu Burger", "Dark Chocolate Chip White Chololate Cookie"));
-
-console.log(chef0.makeDinners("Chipotle Hushpuppies", "Chili Mac", "Vegan Smores Icecream Sandwich"));
+chef0.makeDinners("Chipotle Hushpuppies", "Chili", "Vegan Smores Icecream Sandwich");
+chef0.dinners[2].updateEntree("Chili Mac");//used updateEntree method on Dinner to update dinner[2]
+console.log(chef0.dinners[2]);
 
 console.log(chef0);//dinners added to dinners array of Chef
 
